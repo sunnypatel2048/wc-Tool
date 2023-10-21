@@ -68,3 +68,32 @@ func CalculateCharacters(fileName string) {
 
 	fmt.Println("  ", charCount, fileName)
 }
+
+func CalculateDefaults(fileName string) {
+	fileData, err := os.ReadFile(fileName)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	fBytes := len(fileData)
+	fLines := bytes.Count(fileData, []byte{'\n'})
+
+	f, err := os.Open(fileName)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
+
+	// Set scanner's delimiter to be a space.
+	scanner.Split(bufio.ScanWords)
+
+	fWords := 0
+	for scanner.Scan() {
+		fWords++
+	}
+
+	fmt.Printf("    %d   %d  %d %s\n", fLines, fWords, fBytes, fileName)
+}
