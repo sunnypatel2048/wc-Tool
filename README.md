@@ -44,6 +44,11 @@ This tool was created as a part of [Johh Crickett's](https://www.linkedin.com/in
 ccwc [flag] [filepath]
 ```
 
+Supports reading from starndard input if filepath is not specified.
+```bash
+cat test.txt | ccwc [flag]
+```
+
 ## Flags Supported
 
 - `-c` : Prints the number of bytes in the file.
