@@ -7,23 +7,22 @@ import (
 )
 
 func main() {
-	// linesPtr := flag.Bool("l", false, "Measure the number of lines.")
+	linesPtr := flag.Bool("l", false, "Measure the number of lines in the file.")
 	// wordsPtr := flag.Bool("w", false, "Measure the number of words.")
-	bytesPtr := flag.Bool("c", false, "Measure the number of bytes in a file.")
+	bytesPtr := flag.Bool("c", false, "Measure the number of bytes in the file.")
 	flag.Parse()
 
-	if *bytesPtr {
-		if filename := flag.Arg(0); filename != "" {
-			file, err := os.ReadFile(filename)
-			if err != nil {
-				fmt.Println(err)
-				os.Exit(1)
-			}
-
-			fmt.Println("  ", len(file), filename)
-		} else {
-			fmt.Println("Filename argument not provided.")
-			os.Exit(1)
+	if fileName := flag.Arg(0); fileName != "" {
+		switch {
+		case *bytesPtr:
+			CalculateBytes(fileName)
+		case *linesPtr:
+			CalculateLines(fileName)
+		default:
+			fmt.Println("Out")
 		}
+	} else {
+		fmt.Println("FileName argument not provided.")
+		os.Exit(1)
 	}
 }

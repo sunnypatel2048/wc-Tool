@@ -30,7 +30,7 @@ This tool was created as a part of [Johh Crickett's](https://www.linkedin.com/in
 
 2. Build the code using following command:
     ```bash
-    go build -o ccwc.exe main.go
+    go build -o ccwc.exe ./...
     ```
 
 3. Copy the `ccwc.exe` file to `~/go/bin`. Note that this directory thoud be present in PATH variable in Environment variables.
