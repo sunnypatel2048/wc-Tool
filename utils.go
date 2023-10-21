@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"fmt"
 	"os"
@@ -25,4 +26,24 @@ func CalculateLines(fileName string) {
 
 	lines := bytes.Count(fileData, []byte{'\n'})
 	fmt.Println("  ", lines, fileName)
+}
+
+func CalculateWords(fileName string) {
+	f, err := os.Open(fileName)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
+
+	// Set scanner's delimiter to be a space.
+	scanner.Split(bufio.ScanWords)
+
+	wordCount := 0
+	for scanner.Scan() {
+		wordCount++
+	}
+
+	fmt.Println("  ", wordCount, fileName)
 }
