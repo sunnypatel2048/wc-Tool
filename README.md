@@ -47,6 +47,7 @@ ccwc [flag] [filepath]
 ## Flags Supported
 
 - `-c` : Prints the number of bytes in the file.
+- `-l` : Prints the number of lines in the file.
 
 ## License
 
