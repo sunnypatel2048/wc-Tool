@@ -47,3 +47,24 @@ func CalculateWords(fileName string) {
 
 	fmt.Println("  ", wordCount, fileName)
 }
+
+func CalculateCharacters(fileName string) {
+	f, err := os.Open(fileName)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
+
+	// Set scanner's split function to be `bufio.ScanRunes`.
+	// A rune is a single character in a UTF-8 encoded string.
+	scanner.Split(bufio.ScanRunes)
+
+	charCount := 0
+	for scanner.Scan() {
+		charCount++
+	}
+
+	fmt.Println("  ", charCount, fileName)
+}
