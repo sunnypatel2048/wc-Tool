@@ -24,7 +24,7 @@ func main() {
 		case *charPtr:
 			CalculateCharacters(fileName)
 		default:
-			fmt.Println("Out")
+			CalculateDefaults(fileName)
 		}
 	} else {
 		fmt.Println("FileName argument not provided.")

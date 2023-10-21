@@ -51,6 +51,8 @@ ccwc [flag] [filepath]
 - `-w` : Prints the number of words in the file.
 - `-m` : Prints the number of characters in the file.
 
+Note: If no flag is provided then, number of lines, words, and bytes are printed.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE). You can view the full license text [here](https://opensource.org/licenses/MIT).
