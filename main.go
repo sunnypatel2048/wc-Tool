@@ -8,7 +8,7 @@ import (
 
 func main() {
 	linesPtr := flag.Bool("l", false, "Measure the number of lines in the file.")
-	// wordsPtr := flag.Bool("w", false, "Measure the number of words.")
+	wordsPtr := flag.Bool("w", false, "Measure the number of words in the file.")
 	bytesPtr := flag.Bool("c", false, "Measure the number of bytes in the file.")
 	flag.Parse()
 
@@ -18,6 +18,8 @@ func main() {
 			CalculateBytes(fileName)
 		case *linesPtr:
 			CalculateLines(fileName)
+		case *wordsPtr:
+			CalculateWords(fileName)
 		default:
 			fmt.Println("Out")
 		}
